@@ -17,7 +17,7 @@
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
   background: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
@@ -31,7 +31,11 @@ body {
 /* HEADER / HERO */
 header,
 .hero {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary-dark)
+  );
   color: #fff;
   padding: 48px 24px;
   text-align: center;
@@ -153,5 +157,5 @@ footer {
   text-align: center;
   padding: 24px;
   color: var(--color-text-light);
-  font-size:
+  font-size: 40 ;
 }

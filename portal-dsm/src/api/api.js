@@ -1,47 +1,73 @@
 const API_URL = "http://localhost:3000";
-export async function listarUsuarios() {
-  const resposta = await fetch(`${API_URL}/usuarios`);
-  if (!resposta.ok) {
-    throw new Error("Erro ao buscar usuários.");
+
+// Função única que faz a chamada e trata os erros de forma padronizada.
+async function requisitar(caminho, opcoes) {
+  let resposta;
+  try {
+    resposta = await fetch(`${API_URL}${caminho}`, opcoes);
+  } catch {
+    throw new Error(
+      "Não foi possível conectar à API. Confira se o backend está rodando."
+    );
   }
-  return await resposta.json();
+
+  const dados = await resposta.json().catch(() => ({}));
+
+  if (!resposta.ok) {
+    // O backend responde { erro: "mensagem" } nos casos de 400, 404, 409 e 500
+    throw new Error(dados.erro || "Erro ao comunicar com o servidor.");
+  }
+  return dados;
 }
 
-export async function cadastrarUsuario(usuario) {
-  const resposta = await fetch(`${API_URL}/usuarios`, {
+const JSON_HEADERS = { "Content-Type": "application/json" };
+
+// ---------- Usuários (alunos) ----------
+export function listarUsuarios() {
+  return requisitar("/usuarios");
+}
+
+export function cadastrarUsuario(usuario) {
+  return requisitar("/usuarios", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: JSON_HEADERS,
     body: JSON.stringify(usuario),
   });
-  if (!resposta.ok) {
-    throw new Error("Erro ao cadastrar usuário.");
-  }
-  return await resposta.json();
 }
 
-export async function atualizarUsuario(id, usuario) {
-  const resposta = await fetch(`${API_URL}/usuarios/${id}`, {
+export function atualizarUsuario(id, usuario) {
+  return requisitar(`/usuarios/${id}`, {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: JSON_HEADERS,
     body: JSON.stringify(usuario),
   });
-  if (!resposta.ok) {
-    throw new Error("Erro ao atualizar usuário.");
-  }
-  return await resposta.json();
 }
 
-export async function excluirUsuario(id) {
-  const resposta = await fetch(`${API_URL}/usuarios/${id}`, {
-    method: "DELETE",
+export function excluirUsuario(id) {
+  return requisitar(`/usuarios/${id}`, { method: "DELETE" });
+}
+
+// ---------- Cursos ----------
+export function listarCursos() {
+  return requisitar("/cursos");
+}
+
+export function cadastrarCurso(curso) {
+  return requisitar("/cursos", {
+    method: "POST",
+    headers: JSON_HEADERS,
+    body: JSON.stringify(curso),
   });
-  if (!resposta.ok) {
-    throw new Error("Erro ao excluir usuário.");
-  }
-  return await resposta.json();
 }
 
+export function atualizarCurso(id, curso) {
+  return requisitar(`/cursos/${id}`, {
+    method: "PUT",
+    headers: JSON_HEADERS,
+    body: JSON.stringify(curso),
+  });
+}
+
+export function excluirCurso(id) {
+  return requisitar(`/cursos/${id}`, { method: "DELETE" });
+}

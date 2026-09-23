@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const usuarioRoutes = require("./src/routes/usuarioRoutes");
+const cursoRoutes = require("./src/routes/cursoRoutes");
 const app = express();
 const PORTA = process.env.PORTA || 3000;
 app.use(cors());
@@ -12,6 +13,7 @@ app.get("/", (req, res) => {
   });
 });
 app.use(usuarioRoutes);
+app.use(cursoRoutes);
 app.use((req, res) => {
   res.status(404).json({
     erro: "Rota não encontrada.",

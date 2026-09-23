@@ -1,0 +1,77 @@
+/* Formulário de cadastro/edição */
+.form-aluno {
+  display: grid;
+  gap: 16px;
+  max-width: 620px;
+  margin-top: 24px;
+  padding: 24px;
+  background: #fff;
+  border: var(--border);
+  box-shadow: var(--shadow-brutal);
+}
+
+.form-aluno h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+.form-aluno label {
+  display: grid;
+  gap: 6px;
+  font-weight: 900;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.form-aluno input {
+  padding: 10px 12px;
+  font: inherit;
+  font-weight: 600;
+  text-transform: none;
+  background: var(--color-bg);
+  border: 3px solid var(--color-black);
+}
+
+.form-aluno input:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+/* Botões lado a lado (formulário e cards) */
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.card .acoes {
+  margin-top: 16px;
+}
+
+.card .acoes button {
+  padding: 8px 16px;
+}
+
+.cards .card p {
+  max-width: none;
+  margin: 8px 0 0;
+}
+
+.btn-secundario {
+  background: #fff;
+}
+
+.btn-perigo {
+  background: var(--color-primary);
+}
+
+.btn-perigo:hover {
+  background: var(--color-black);
+  color: #fff;
+}
+
+/* Mensagem de erro */
+.mensagem-erro {
+  background: var(--color-primary);
+}

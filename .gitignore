@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 .env
+Códigos.sql
+
 
 # Editor directories and files
 .vscode/*

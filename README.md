@@ -335,6 +335,6 @@ As respostas de erro seguem o formato `{ "erro": "mensagem" }`.
 
 ## 🔮 Ideias para evoluir o projeto
 
-- [ ] 🔗 Relacionar alunos e cursos (matrículas)
-- [ ] 🔍 Busca e filtros nas listagens
-- [ ] 🔐 Autenticação de usuários
+- Relacionar alunos e cursos (matrículas).
+- Busca e filtros nas listagens.
+- Autenticação de usuários.
